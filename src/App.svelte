@@ -1,62 +1,72 @@
-<script>
-  import logo from './assets/Mytsbclogo.png'
-  import Counter from './lib/Counter.svelte'
+<script lang="ts">
+  import BottomAppBar, { Section } from "@smui-extra/bottom-app-bar";
+  import IconButton from "@smui/icon-button";
+  import Checkbox from "@smui/checkbox";
+  import FormField from "@smui/form-field";
+
+  let secondaryColor = false;
 </script>
 
-<main>
-  <img src={logo} alt="MyTSBC Logo" />
-  <h1>Welcome To MyTSBC</h1>
+<div class="flexy">
+  test1
+  <div class="bottom-app-bar-container flexor">
+    <BottomAppBar
+      variant="static"
+      color={secondaryColor ? "secondary" : "primary"}
+    >
+      <Section>
 
-  <Counter />
+      </Section>
+      <Section>
+        <IconButton class="material-icons">menu</IconButton>
+        <IconButton class="material-icons"
+          
+          >home</IconButton>
+        <IconButton class="material-icons">menu</IconButton>
+      </Section>
+      <Section>
 
-  <p>
-    MyTSBC Catch, Watch On The Go! </p>
-
-  <p>
-    Never miss a beat! </p>
-
-</main>
+      </Section>
+    </BottomAppBar>
+  </div>
+</div>
 
 <style>
-  :root {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  .bottom-app-bar-container {
+    width: 100%;
+    height: max-content;
+    position: fixed;
+    bottom: 0;
+    border: 1px solid
+      var(--mdc-theme-text-hint-on-background, rgba(0, 0, 0, 0.1));
+
+    background-color: var(--mdc-theme-background, #fff);
+
+    overflow: auto;
+    display: inline-block;
   }
 
-  main {
-    text-align: center;
-    padding: 1em;
-    margin: 0 auto;
-  }
-
-  img {
-    height: 16rem;
-    width: 16rem;
-  }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4rem;
-    font-weight: 100;
-    line-height: 1.1;
-    margin: 2rem auto;
-    max-width: 14rem;
-  }
-
-  p {
-    max-width: 14rem;
-    margin: 1rem auto;
-    line-height: 1.35;
-  }
-
-  @media (min-width: 480px) {
-    h1 {
-      max-width: none;
+  @media (max-width: 480px) {
+    .bottom-app-bar-container {
+      margin-right: 0;
     }
+  }
 
-    p {
-      max-width: none;
-    }
+  .flexy {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .flexor {
+    overflow: hidden;
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  .flexor-content {
+    flex-basis: 0;
+    height: 0;
+    flex-grow: 1;
+    overflow: auto;
   }
 </style>
